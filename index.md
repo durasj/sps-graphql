@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SPS GraphQL
+title: Prezentácia
 ---
 
 ## Motivácia
