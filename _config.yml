@@ -1,6 +1,7 @@
 remote_theme: pmarsceill/just-the-docs
 title: GraphQL SPS
 description: GraphQL prezentácia na Seminár z programovania v sieťach Univerzity Pavla Jozefa Šafárika.
+url: https://sps.duras.me
 search_enabled: false
 footer_content: "Copyright &copy; 2019 Jakub Duras. Distributed under the <a href=\"https://github.com/durasj/sps-graphql/blob/master/LICENSE\">MIT license</a>."
 aux_links:
