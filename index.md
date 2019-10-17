@@ -49,7 +49,23 @@ My máme ale veľmi VEĽMI radi mapy a spolu s ďalšími ich hľadáme a zbiera
           }
         }
       }
-    }
+    }    maps: async () => {
+        const query = `{
+            reddit {
+              subreddit(name: "MapPorn") {
+                hotListings(limit: 5) {
+                  title
+                  url
+                  score
+                }
+              }
+            }
+        }`;
+
+        const data = await request('https://www.graphqlhub.com/graphql', query);
+
+        return data.reddit.subreddit.hotListings;
+    },
 }
 ```
 
@@ -150,7 +166,8 @@ Základ servera je:
 ```js
 const express = require('express');
 const express_graphql = require('express-graphql');
-const { buildSchema } = require('graphql');// GraphQL schema
+const { buildSchema } = require('graphql');
+const cors = require('cors');
 
 const schema = buildSchema(`
     type Query {
