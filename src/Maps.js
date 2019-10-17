@@ -4,30 +4,16 @@ import { useQuery } from 'urql';
 export default function Maps () {
     const [result] = useQuery({
         query: `{
-            reddit {
-              subreddit(name: "MapPorn"){
-                hotListings(limit: 5) {
-                  title
-                  url
-                  score
-                  comments(limit: 3) {
-                    body
-                    author { 
-                      username
-                      commentKarma
-                    }
-                  }
-                }
-              }
-            }
+          maps {
+            title
+            url
+            score
+          }
         }`,
     });
 
     const { fetching, data } = result;
-    const maps =
-        data
-        ? data.reddit.subreddit.hotListings
-        : [];
+    const maps = data ? data.maps : [];
 
     const mapsList = maps.map(map => (
         <div>

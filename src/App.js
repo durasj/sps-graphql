@@ -5,7 +5,7 @@ import './App.css';
 import Maps from './Maps';
 
 const client = createClient({
-  url: 'https://www.graphqlhub.com/graphql',
+  url: 'http://localhost:4000/graphql',
 });
 
 function App() {
