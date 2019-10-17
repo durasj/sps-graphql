@@ -143,12 +143,84 @@ export default function Maps () {
 
 GraphQL API nemusíme len konzumovať ale môžeme aj vytvoriť pre naše potreby (alebo druhých). Môžeme zostať v priečinku s react aplikáciou a vytvoríme v ňom aj server.
 
-TODO: Nainstalovanie balickov, zavesi sa server, vlozi existujuci server a prida favorites.
+Na to potrebujeme zopár balíkov: `npm install graphql express express-graphql cors`.
+
+Základ servera je:
+
+```js
+const express = require('express');
+const express_graphql = require('express-graphql');
+const { buildSchema } = require('graphql');// GraphQL schema
+
+const schema = buildSchema(`
+    type Query {
+        message: String
+    }
+`);
+const root = {
+    message: () => 'Hello World!'
+};
+const app = express();
+app.use(cors());
+
+app.use('/graphql', express_graphql({
+    schema: schema,
+    rootValue: root,
+    graphiql: true
+}));
+
+app.listen(
+    4000,
+    () => console.log('Express GraphQL Server Now Running On localhost:4000/graphql'),
+);
+```
+
+A spustíme ho pomocou `node server.js`. Mozeme otvorit [localhost:4000/graphql](http://localhost:4000/graphql).
+
+Na nasom serveri sa mozeme dostat k hodnotam rozne, napr. aj ziskanim z ineho GraphQL servera. Na to chceme vytvorit klienta s balickom, ktory si nainstalujeme: `npm install graphql-request`.
+
+Na server pridame type Map a resolver na maps.
+
+```js
+const schema = buildSchema(`
+    type Map {
+        title: String!
+        url: String!
+        score: String!
+    }
+
+    type Query {
+        message: String
+        maps: [Map!]!
+    }
+`);
+```
+
+
+```js
+    maps: async () => {
+        const query = `{
+            reddit {
+              subreddit(name: "MapPorn") {
+                hotListings(limit: 5) {
+                  title
+                  url
+                  score
+                }
+              }
+            }
+        }`;
+
+        const data = await request('https://www.graphqlhub.com/graphql', query);
+
+        return data.reddit.subreddit.hotListings;
+    },
+```
+
+A klienta upravime podla toho. Finalny kod v repozitari.
 
 ## Ďalšie úlohy (na doma?)
 
-Od najľahšej po najťažšiu.
-
 1. Skúste iné API zo [zoznamu](https://github.com/APIs-guru/graphql-apis), ktoré vás zaujíma a má možnosť odkskúšania v prehliadači a napíšte zopár queries na čítanie dát.
-2. Doplnte do React aplikácie zobrazovanie komentárov k príspevkom.
-3. Pridajte odstránenie z obľúbených a vylistovanie len obľúbených na server aj klienta.
+2. Doplnte na server do schemy a resolvera komentare.
+3. Pridajte zobrazovanie komentarov na klienta.
