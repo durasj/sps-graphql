@@ -35,7 +35,7 @@ My máme ale veľmi VEĽMI radi mapy a spolu s ďalšími ich hľadáme a zbiera
 
 ```graphql
 {
-  reddit 
+  reddit {
     subreddit(name: "MapPorn"){
       hotListings(limit: 5) {
         title
@@ -49,23 +49,8 @@ My máme ale veľmi VEĽMI radi mapy a spolu s ďalšími ich hľadáme a zbiera
           }
         }
       }
-    }    maps: async () => {
-        const query = `{
-            reddit {
-              subreddit(name: "MapPorn") {
-                hotListings(limit: 5) {
-                  title
-                  url
-                  score
-                }
-              }
-            }
-        }`;
-
-        const data = await request('https://www.graphqlhub.com/graphql', query);
-
-        return data.reddit.subreddit.hotListings;
     },
+  }
 }
 ```
 
@@ -203,7 +188,7 @@ const schema = buildSchema(`
     type Map {
         title: String!
         url: String!
-        score: String!
+        score: Int!
     }
 
     type Query {
