@@ -5,7 +5,7 @@ title: Prezentácia
 
 ## Motivácia
 
-Nemôžeme našu aplikáciu odizolovať od zvyšku sveta. Potrebujeme komunikovať s cudzími službami. Spôsoby akými sme to umožnili sa rôznia (TODO: link na REST APIs dvoch rôznych gigantov). GraphQL to zjednocuje a berie o úroveň vyššie.
+Nemôžeme našu aplikáciu odizolovať od zvyšku sveta. Potrebujeme komunikovať s cudzími službami. Spôsoby akými sme to umožnili su rôzne ([Twitter API](https://developer.twitter.com/en/docs/api-reference-index), [Github API](https://developer.github.com/v3/)). GraphQL to zjednocuje a berie o úroveň vyššie.
 
 https://www.youtube.com/watch?v=783ccPac__No8
 
