@@ -7,7 +7,7 @@ title: Prezentácia
 
 Nemôžeme našu aplikáciu odizolovať od zvyšku sveta. Potrebujeme komunikovať s cudzími službami. Spôsoby akými sme to umožnili sa rôznia (TODO: link na REST APIs dvoch rôznych gigantov). GraphQL to zjednocuje a berie o úroveň vyššie.
 
-TODO: Zostrih silno motivačného videa.
+https://www.youtube.com/watch?v=783ccPac__No8
 
 ## Získavanie informácií z cudzích GraphQL APIs
 
