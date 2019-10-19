@@ -5,13 +5,13 @@ title: Prezentácia
 
 ## Motivácia
 
-Nemôžeme našu aplikáciu odizolovať od zvyšku sveta. Potrebujeme komunikovať s cudzími službami. Spôsoby akými sme to umožnili su rôzne ([Twitter API](https://developer.twitter.com/en/docs/api-reference-index), [Github API](https://developer.github.com/v3/)). GraphQL to zjednocuje a berie o úroveň vyššie.
+Nemôžeme našu aplikáciu odizolovať od zvyšku sveta. Potrebujeme komunikovať s cudzími službami. Spôsoby akými sme to umožnili v minulosti sú rôzne ([Twitter API](https://developer.twitter.com/en/docs/api-reference-index), [Github API](https://developer.github.com/v3/)). GraphQL to zjednocuje a berie o úroveň vyššie.
 
-https://www.youtube.com/watch?v=783ccPac__No8
+Dokument o vzniku GraphQL: [GraphQL: The Documentary](https://www.youtube.com/watch?v=783ccP__No8)
 
 ## Získavanie informácií z cudzích GraphQL APIs
 
-Existujú APIs vytvorené priamo len na GraphQL, ale existujú aj "proxies", ktoré obaľujú existujúce APIs. Vyhneme sa uzatvoreným a pozrieme sa na niektoré z otvorených: https://github.com/APIs-guru/graphql-apis
+Existujú APIs vytvorené priamo len na GraphQL, ale existujú aj "proxies", ktoré obaľujú existujúce APIs. Vyhneme sa uzatvoreným a pozrieme sa na niektoré z otvorených: [APIs-guru/graphql-apis](https://github.com/APIs-guru/graphql-apis)
 
 Na hranie použijeme [GraphQL Hub Playground](https://www.graphqlhub.com/playground?query=%23%20Hit%20the%20Play%20button%20above!%0A%23%20Hit%20%22Docs%22%20on%20the%20right%20to%20explore%20the%20API%0A%0A%7B%0A%7D%0A).
 
@@ -49,7 +49,7 @@ My máme ale veľmi VEĽMI radi mapy a spolu s ďalšími ich hľadáme a zbiera
           }
         }
       }
-    },
+    }
   }
 }
 ```
@@ -177,11 +177,11 @@ app.listen(
 );
 ```
 
-A spustíme ho pomocou `node server.js`. Mozeme otvorit [localhost:4000/graphql](http://localhost:4000/graphql).
+A spustíme ho pomocou `node server.js`. Môžeme otvoriť [localhost:4000/graphql](http://localhost:4000/graphql).
 
-Na nasom serveri sa mozeme dostat k hodnotam rozne, napr. aj ziskanim z ineho GraphQL servera. Na to chceme vytvorit klienta s balickom, ktory si nainstalujeme: `npm install graphql-request`.
+Na našom serveri sa možeme dostať k hodnotám rôzne, napr. aj získaním z iného GraphQL servera. Na to chceme vytvoriť klienta s balíčkom, ktorý si nainštalujeme: `npm install graphql-request`.
 
-Na server pridame type Map a resolver na maps.
+Na server pridáme type Map a resolver na maps.
 
 ```js
 const schema = buildSchema(`
@@ -219,10 +219,10 @@ const schema = buildSchema(`
     },
 ```
 
-A klienta upravime podla toho. Finalny kod v repozitari.
+A klienta upravíme podľa toho. Finálny kód v repozitári.
 
 ## Ďalšie úlohy (na doma?)
 
 1. Skúste iné API zo [zoznamu](https://github.com/APIs-guru/graphql-apis), ktoré vás zaujíma a má možnosť odkskúšania v prehliadači a napíšte zopár queries na čítanie dát.
-2. Doplnte na server do schemy a resolvera komentare.
-3. Pridajte zobrazovanie komentarov na klienta.
+2. Doplnte na server do schémy a resolvera komentáre.
+3. Pridajte zobrazovanie komentárov na klienta.
