@@ -5,10 +5,20 @@ const cors = require('cors');
 const { request } = require('graphql-request');
 
 const schema = buildSchema(`
+    type Author {
+        username: String!
+    }
+
+    type Comment {
+        author: Author!
+        body: String
+    }
+
     type Map {
         title: String!
         url: String!
         score: String!
+        comments: [Comment!]!
     }
 
     type Query {
@@ -21,19 +31,29 @@ const root = {
     maps: async () => {
         const query = `{
             reddit {
-              subreddit(name: "MapPorn") {
+              subreddit(name: "Awww") {
                 hotListings(limit: 5) {
                   title
                   url
                   score
+                  comments {
+                      author {
+                          username
+                      }
+                      body
+                  }
                 }
               }
             }
         }`;
 
-        const data = await request('https://www.graphqlhub.com/graphql', query);
+        try {
+            const data = await request('https://www.graphqlhub.com/graphql', query);
 
-        return data.reddit.subreddit.hotListings;
+            return data.reddit.subreddit.hotListings;
+        } catch (e) {
+            console.error(e);
+        }
     },
 };
 const app = express();

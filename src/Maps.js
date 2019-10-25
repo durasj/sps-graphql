@@ -8,6 +8,7 @@ export default function Maps () {
             title
             url
             score
+            comments
           }
         }`,
     });
@@ -16,10 +17,15 @@ export default function Maps () {
     const maps = data ? data.maps : [];
 
     const mapsList = maps.map(map => (
-        <div>
+        <div key={map.title}>
             <h3>{map.title}</h3>
             <img src={map.url} alt={map.title} width="50%" />
             <p>Score: {map.score}</p>
+            <ul>
+                {map.comments.map(
+                    comment => (<li>{comment.body}</li>)
+                )}
+            </ul>
             <hr />
         </div>
     ));
